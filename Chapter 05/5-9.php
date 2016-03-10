@@ -1,0 +1,25 @@
+<html>
+<!程序名称：5-9.php>
+<!程序功能：递减运算符的使用。>
+
+<head>
+	<title>递减运算符的使用</title>
+</head>
+<body>
+<?php
+	$a=10;
+	$d=88;
+	echo"\$a=$a";
+	echo"<br>";
+	echo"\$d=$d";
+	echo"<br>";
+	$b=$a--;
+	echo"\$a--=$b";
+	echo"<br>";
+	echo"\$a--后的值:$a";
+	echo"<br>";
+	$c=--$d;
+	echo"--\$d=$c";
+?>
+	</body>
+	</html>

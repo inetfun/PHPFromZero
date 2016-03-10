@@ -1,0 +1,46 @@
+<html>
+<!--程序名称:12-3.php-->
+<!--程序功能:字段信息获取函数使用.-->
+
+<head>
+	  <title>字段信息获取函数使用</title>
+</head>
+<body>
+	  <?php
+	  $mysqluser="root";
+	  $mysqlpass="passwd";
+	  $dbname="news";
+	  $tablename="tnews";
+	  $limit="5";
+	 $connect=mysql_connect("localhost",$mysqluser,$mysqlpass);
+	 mysql_select_db("$dbname"); 
+	 $result=mysql_query("select * from $tablename");
+	 echo"<table border=1>";
+	 echo"<tr><td>name</td><td>table</td>
+	 		<td>max_length</td><td>not_null</td>
+			 <td>primary_key</td><td>unique_key</td>
+			 <td>mutiple_key</td><td>numeric</td>
+			 <td>blob</td><td>type</td>
+			 <td>unsigned</td><td>zerofill</td></tr>";
+			 while($obj=mysql_fetch_field($result))
+			 {
+			  	echo"<tr>";
+			  	echo"<td>".$obj->name."</td>";
+			  	echo"<td>".$obj->table."</td>";
+			  	echo"<td>".$obj->max_length."</td>";
+			  	echo"<td>".$obj->not_null."</td>";
+			  	echo"<td>".$obj->primary_key."</td>";
+			  	echo"<td>".$obj->unique_key."</td>";
+			  	echo"<td>".$obj->multiple_key."</td>";
+			  	echo"<td>".$obj->numeric."</td>";
+			  	echo"<td>".$obj->blob."</td>";
+			  	echo"<td>".$obj->type."</td>";
+			  	echo"<td>".$obj->unsigned."</td>";
+			  	echo"<td>".$obj->zerofill."</td>";
+			  	echo"</tr>";
+			 }
+			 echo"</table>";
+			 mysql_close();
+		?>
+		</body>
+		</html>

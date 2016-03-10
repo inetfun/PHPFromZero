@@ -1,0 +1,118 @@
+<html>
+<!--程序名称:3-22.html-->
+<!--程序功能:浮动图像显示.-->
+
+<head>
+<title>浮动图像显示</title>
+<SCRIPT language=javascript>
+// 定义浏览器检查变量
+var navigator_ok=false;
+//取得游览器的版本号第一个字母并转换为数字。
+var version_No=parseInt(navigator.appVersion.substring(0,1));
+//取得浏览器的名称。
+var aname=navigator.appName;
+//检查浏览器是否为IE 4.0 以上的版本。
+function check_navigate() {
+  if(aname.indexOf("Internet Explorer")!=-1) {
+    if(version_No>=4)
+       navigator_ok=navigator.javaEnabled();
+  }
+}
+//定义移动增量的最小值。
+var delta_min=2;
+//定义移动增量的最大值。
+var delta_max=5;
+//定义产生X、Y增量随机调整大小幅度的变量。
+var delta_direction=2;
+//定义一个记录浮动图像的对象。
+function floater_obj(origin_x,origin_y,my_width,my_height) {
+  this.delta_x=0;
+  this.delta_y=0;
+  this.width=my_width;
+  this.height=my_height;
+  this.x=origin_x;
+  this.y=origin_y;
+}
+//定义使图像产生浮动效果的执行函数。
+function floater_move() {
+  if(navigator_ok) {
+	//取得文档在窗口内的X和Y方向的偏移量。
+    pageX=window.document.body.scrollLeft;
+    pageY=window.document.body.scrollTop;
+    //取得当前窗口的宽度和高度的数值。
+    pageW=window.document.body.offsetWidth;
+    pageH=window.document.body.offsetHeight;
+    //累计X、Y的增量值。
+    floater.x +=floater.delta_x;
+    floater.y +=floater.delta_y;
+    //使X、Y的增量值随机的增加或减少。
+    floater.delta_x+=delta_direction*(Math.random()-0.5);
+    floater.delta_y+=delta_direction*(Math.random()-0.5);
+    //限制X、Y的下正负增量值不超过最大限制。
+    if(floater.delta_x>(delta_max+delta_min))
+        floater.delta_x=(delta_max+delta_min)*2- floater.delta_x;
+    if(floater.delta_x<(-delta_max-delta_min))
+        floater.delta_x=(-delta_max-delta_min)*2- floater.delta_x;
+    if(floater.delta_y>(delta_max+delta_min))
+        floater.delta_y=(delta_max+delta_min)*2-floater.delta_y;
+    if(floater.delta_y<(-delta_max-delta_min))
+        floater.delta_y=(-delta_max-delta_min)*2-floater.delta_y;
+    //如果移动到窗口的左边界，则产生一个正的增量值，使其向右移动。
+    if(floater.x<=pageX) {
+        floater.x=pageX;
+        floater.delta_x=delta_min+delta_max*Math.random();
+        }
+    //如果移动到窗口的右边界，则产生一个负的增量值，使其向左移动。
+    if(floater.x>=pageX+pageW-floater.width) {
+        floater.x=pageX+pageW-floater.width;
+        floater.delta_x=-delta_min-delta_max*Math.random();
+        }
+     //如果移动到窗口的上边界，则产生一个正的增量值，使其向下移动。
+    if(floater.y<=pageY) {
+        floater.y=pageY;
+        floater.delta_y=delta_min+delta_max*Math.random();
+        }
+    //如果移动到窗口的下边界，则产生一个负的增量值，使其向上移动。
+    if(floater.y>=pageY+pageH-floater.height) {
+        floater.y=pageY+pageH-floater.height;
+        floater.delta_y=-delta_min-delta_max*Math.random();
+        }
+    //使用计算完成的X、Y座标值给定图像的移动位置。
+    document.all.my_picture.style.pixelLeft=floater.x;
+    document.all.my_picture.style.pixelTop=floater.y;
+  }
+}
+//定义一个用于产生对象实例的全局变量。
+var floater;
+//初始化函数（在<body onload="ini()">中调用）。
+function ini() {
+    //调用检查浏览器函数。
+    check_navigate();
+    //如果浏览器符合要求，则执行图像的移动功能。
+    if(navigator_ok) {
+        //----------------------------------------------------------------
+        //生成一个记录移动位置的“对象实例”。
+        //对象参数顺序为：对象在页面上出现的初始X座标、Y座标，对象的宽度、高度。
+        //----X、Y座标定义方法如下：-------
+        //左上角定义为：0，0
+        //右上角定义为：800，0
+        //左下角定义为：0，600
+        //右下角定义为：800，600
+        //---------------------------------------
+        //如果被显示的图像为80X80的尺寸。
+        //定义对象宽度为：80+20=100 （考虑窗口水平滚动条宽度）
+        //定义对象高度为：80+20=100 （考虑窗口垂直滚动条宽度）
+        //------------------------------------------------------------------
+        floater=new floater_obj(800,0,100,100);
+        //定时执行图像移动函数（现为：100毫秒）。
+        window.setInterval("floater_move()",100);
+    }
+}
+</SCRIPT>
+</head>
+<body bgcolor="#FFFFFF" onload="ini()">
+<div id=my_picture style="HEIGHT: 88px; POSITION: absolute; WIDTH: 80px; left: 185px; top:73px; z-index:10" ><a
+href="http://www.sino8848.com" target=_blank><img border=0 src="111.jpg"></a>
+</div>
+</body>
+</html>

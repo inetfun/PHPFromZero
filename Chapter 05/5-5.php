@@ -1,0 +1,30 @@
+<html>
+<!程序名称：5-5.php>
+<!程序功能：字符串运算符的使用。>
+
+<head>
+	<title>字符串运算符的使用</title>
+</head>
+<body>
+<?php
+	 //此处变量a等于字符串"abcd". 
+	$a="abcd";
+	//此处变量b等于字符串"efghl".
+	$b="efghl";
+	$c=$a.$b;
+	$d="$a"."不等于"."$b";
+	//在浏览器上输出a 的值. 
+	echo"输出原值:$a";
+	echo"<br>";
+	//在浏览器上输出b. 
+	echo"输出原值:$b";
+	echo"<br>";
+	//在浏览器上输出c的值. 
+	echo"\$c=$c";
+	echo"<br>";
+	//在浏览器上输出d. 
+	echo"\$d=$d";
+	echo"<br>";
+	?>
+	</body>
+	</html>

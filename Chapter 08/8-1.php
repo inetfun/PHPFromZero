@@ -1,0 +1,39 @@
+<html>
+<!程序名称：8-1.php>
+<!程序功能：拆分字符串函数的方法。>
+
+<head>
+	<title>拆分字符串函数的方法</title>
+</head>
+<body>
+<?php
+	 $str="0123456789";
+	 echo"\$str=$str";
+	 echo"<br>";
+	 echo"substr(\$str,4)=".substr($str,4);
+	 echo"<br>";
+	 echo"substr(\$str,-4)=".substr($str,-4);
+	 echo"<br>";
+	 echo"substr(\$str,4,2)=".substr($str,4,2);
+	 echo"<br>";
+	 echo"substr(\$str,4,10)=".substr($str,4,10);
+	 echo"<br>";
+	 echo"substr(\$str,4,-2)=".substr($str,4,-2);
+	 echo"<br>";
+	 echo"substr(\$str,4,-10)=".substr($str,4,-10);
+	 echo"<br>";
+	 echo"substr(\$str,-4,2)=".substr($str,-4,2);
+	 echo"<br>";
+	 echo"substr(\$str,-4,10)=".substr($str,-4,10);
+	 echo"<br>";
+	 echo"substr(\$str,-4,-2)=".substr($str,-4,-2);
+	 echo"<br>";
+	 echo"substr(\$str,-4,-10)=".substr($str,-4,-10);
+	 echo"<br>";
+	 echo"substr(\$str,\"ab\")=".substr($str,"ab");
+	 echo"<br>";
+	 echo"substr(\$str,\"4ab\")=".substr($str,"4ab");
+	 echo"<br>";
+?>
+	</body>
+	</html>

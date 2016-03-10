@@ -1,0 +1,22 @@
+<html>
+<!程序名称：5-8.php>
+<!程序功能：递增运算符的使用。>
+
+<head>
+	<title>递增运算符的使用</title>
+</head>
+<body>
+<?php
+	$a=1;
+	echo"\$a=$a";
+	echo"<br>";
+	$b=$a++;
+	echo"\$a++=$b";
+	echo"<br>";
+	echo"\$a++后的值:$a";
+	echo"<br>";
+	$c=++$a;
+	echo"++\$a=$c";
+?>
+	</body>
+	</html>

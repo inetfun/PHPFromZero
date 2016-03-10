@@ -1,0 +1,30 @@
+<html>
+<!程序名称：5-2.php>
+<!程序功能：PHP关系运算符的使用。>
+
+<head>
+	<title>PHP关系运算符的使用</title>
+</head>
+<body>
+<?php
+	//设置变量a等于3。 
+	$a=3;
+	//设置变量b等于4。 
+	$b=4;
+	echo"\$a=$a<br>";
+	echo"\$b=$b<br>"; 
+	echo"比较的结果：<br>";
+	//条件变量a大于 变量b。 
+	if($a>$b)
+	{ 
+	 		echo"(\$a>\$b)即($(a)>$(b))为真！";
+	 		echo"<br>";
+	}
+	else
+	{
+	 		echo"(\$a>\$b)即($(a)>$(b))为假";
+	 		echo"<br>";
+	}
+	?>
+	</body>
+	</html>

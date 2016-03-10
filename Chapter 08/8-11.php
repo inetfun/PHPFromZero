@@ -1,0 +1,23 @@
+<html>
+<!程序名称：8-11.php>
+<!程序功能：数组函数的使用。>
+
+<head>
+	<title>数组函数的使用</title>
+</head>
+<body>
+<?php	
+	 		list($var1,$var2,$var3)=array("a","b","c");
+	 		list($var4,$var5,$var6)=array(1=>"a",3=>"b","c");
+	 				echo"$var1,$var2,$var3";
+	 				echo"<br>\n";
+	 				echo"$var4,$var5,$var6";
+	 				echo"<br>\n";
+	 		$arr=range(1,10);
+	 		for($n=0;$n<count($arr);$n++)
+	 		{
+			 		echo"\$arr[$n]=$arr[$n];\n";
+			 }
+?>	 
+	</body>
+	</html>

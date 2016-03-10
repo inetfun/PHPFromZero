@@ -1,0 +1,40 @@
+<html>
+<!程序名称：8-14.php>
+<!程序功能：使用动态操作函数实现数组动态扩充。>
+
+<head>
+	<title>使用动态操作函数实现数组动态扩充</title>
+</head>
+<body>
+<?php	
+		$arr=array("a","b","c");
+		while(list($key,$value)=each($arr))
+			echo "\$arr[$key]=$value;";
+			echo"<br>";
+			array_push($arr,1,2);
+			echo"从数组末尾压入1\2:";
+			echo"<br>";
+			reset($arr);
+			while(list($key,$value)=each($arr))
+					echo"\$arr[$key]=$value;";
+					echo"<br>";
+					echo"从数组末尾弹出:".array_pop($arr);
+					echo"<br>";
+					reset($arr);
+					while(list($key,$value)=each($arr))
+					echo"\$arr[$key]=$value;";
+					echo"<br>";
+			array_unshift($arr,3,4);
+			echo"从数组头部压入3,4:<br>";
+			reset($arr);
+			while(list($key,$value)=each($arr))
+					echo"\$arr[$key]=$value;";
+					echo"<br>";
+					echo"从数组头部弹出:".array_shift($arr)."<br>";
+					reset($arr);
+					while(list($key,$value)=each($arr))
+					echo"\$arr[$key]=$value;";
+					echo"<br>"; 
+?>	 
+	</body>
+	</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<!--程序名称:3-23.html-->
+<!--程序功能:表单非法关键词验证.-->
+
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" /> 
+<title>表单非法关键词验证</title> 
+</head> 
+
+<body> 
+<div id="key"></div> 
+<form action="http://bbs.blueidea.com/thread-2781039-1-16.html" method="post" name="form1" target="_blank" id="form1" style="text-align:center;" onsubmit="return check()"> 
+<textarea name="userText" cols="50" rows="15" id="userText"></textarea> 
+<br /> 
+<input type="submit" name="Submit" value="提交" /> 
+</form> 
+<div id="info" align="center"></div> 
+<script type="text/javascript"> 
+var keyStr="藏独|窃听|反共|垃圾|人渣|女性";//你可以在这里增加限制关键词，词之间用英文半角“|” 
+function check() { 
+var rs_value=document.form1.userText.value; 
+if (rs_value=="") { 
+alert("请录入待检测的内容！"); 
+document.form1.userText.focus(); 
+return false; 
+} 
+var keyArray=keyStr.split("|"); 
+var re; 
+for (i=0;i<keyArray.length;i++) { 
+re = new RegExp (keyArray[i],"g"); 
+if (re.exec(rs_value)!=null) { 
+alert("含有非法关键词！"); 
+document.form1.userText.focus(); 
+return false; 
+} 
+} 
+} 
+window.onload=function() { 
+document.getElementById("key").innerHTML="<strong>现有非法关键字集：</strong>"+keyStr; 
+} 
+</script> 
+</body> 
+</html> 
