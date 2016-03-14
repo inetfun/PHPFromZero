@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--名称：14-7.html-->
+<!--功能：PHP+AJAX注册用户名验证的个单程序。-->
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<META HTTP-EQUIV="expires" CONTENT="0">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<title>PHP+AJAX注册用户名验证</title>
+<style type="text/css">
+<!--
+body{
+    text-align:center;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    background:#dfddfd;
+}
+#login {
+    margin-top:6%;
+    margin-right:auto;
+    margin-left:auto;
+    line-height: 20px;
+    color: #000000;
+    width:300px;
+    border:1px solid #336699;
+    background:#fdd;
+}
+#frmlogin{
+    text-align:left;
+    margin-left:8px;
+}
+h1{
+    margin:0px 0px 10px 0px;
+    padding:0px;
+    width:100%;
+    height:30px;
+    line-height:30px;
+    color:#FFF;
+    background:#336699;
+    font-size:18px;
+    text-align:left;
+    text-indent:10px;
+    font-weight:normal;
+    font-family:Arial, Helvetica, sans-serif;
+}
+input{
+    border:1px solid #336699;
+    height:14px;
+    line-height:14px;
+    width:120px;
+}
+.button{
+    padding-right:10px;
+    padding-left:10px;
+    height:22px;
+    line-height:22px;
+    background:#fbfbfb;
+    color:#000;
+    text-align:center;
+    border-right:2px solid #999;
+    border-left:2px solid #999;
+    border-top:1px solid #999;
+    border-bottom:1px solid #999;
+    margin-right:5px;
+    margin-left:5px;
+}
+label{
+    font-weight:bold;
+    color:#336699;
+}
+#tip{
+    color:#fidxd0;
+}
+-->
+</style>
+<script type="text/javascript">
+<!--
+//XMLHttpRequest 
+    var xmlhttp = false;
+    try {
+        xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+    } catch (e) {
+        try {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        } catch (e2) {
+            xmlhttp = false;
+        }
+    }
+    if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
+        xmlhttp = new XMLHttpRequest();
+    }
+    function Ajax(data){    
+        xmlhttp.open("GET","14-8.php?username="+escape(document.getElementById("username").value),true);
+        xmlhttp.send(null);
+    
+        xmlhttp.onreadystatechange=function(){
+            if (4==xmlhttp.readyState){
+                if (200==xmlhttp.status){
+                    document.getElementById("tip").innerHTML=xmlhttp.responseText;
+                }else{
+                    alert("发生错误!");
+                }
+            }
+        }
+    }
+    function chkUserName(obj){
+        if(obj.value.length<1){
+            obj.style.backgroundColor="#efefef";
+            alert("请输入用户名!");
+            obj.focus();
+        }else{
+            //调用Ajax函数,向服务器端发送查询
+            Ajax(obj.value);
+        }           
+
+    }
+//-->
+</script>
+</head>
+
+<body>
+    <div id="login">
+        <h1>PHP+AJAX注册用户名验证</h1>
+        <form id="frmlogin" name="frmlogin">
+          <label>用户名:
+          <input name="username" type="text" id="username" size="22" maxlength="10" onblur="chkUserName(this)" />
+          </label><label id="tip"></label>
+                <p>
+                  <label>密 码:
+                  <input name="pwd" type="password" id="pwd" size="24" maxlength="16" />
+                  </label>
+          </p>
+                <p align="center">
+                  <input name="Submit" type="button" class="button" id="btn_login" style="width:60px;background:#efefef;height:25px;line-height:25px;font-size:12px;" value="注册" />
+                  <input name="Submit2" type="reset" class="button" style="width:60px;background:#EFEFEF;height:25px;line-height:25px;font-size:12px;" value="重置" />
+                </p>
+      </form>
+        
+</div>
+</body>
+</html>
+

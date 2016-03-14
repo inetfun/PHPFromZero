@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--名称：15-5.xml-->
+<!--功能：XML文件-->
+
+<books>
+  <book>
+    <author>李刚</author>
+    <title>php jquery</title>
+  </book>
+  <book>
+    <author>李刚</author>
+    <title>JAVA</title>
+  </book>
+  <book>
+    <author>李刚</author>
+    <title>php </title>
+  </book>
+</books>

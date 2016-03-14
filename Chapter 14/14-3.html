@@ -1,0 +1,17 @@
+<html>
+<!--程序名称:14-3.html-->
+<!--程序功能:异步发送请求程序.-->
+
+<head>
+<title>异步发送请求</title>
+</head>
+<body>
+function getinfo() {
+     var email = document.getemailID("email").value;
+     var url = "/cgi-local/lookupCustomer.php?email=" + escape(email);
+     request.open("GET", url, true);
+     request.onreadystatechange = updatePage;
+     request.send(null);
+   }
+</boyd>
+</html>

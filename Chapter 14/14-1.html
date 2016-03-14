@@ -1,0 +1,24 @@
+<html>
+<!--程序名称:14-1.html-->
+<!--程序功能:建立远程连接对象程序.-->
+
+   <head>
+     <title>建立远程连接对象程序</title>
+   </head>
+   <script type="text/javascript">
+     function handleResponse() {
+       alert('this function is called from server.html');
+     }
+   </script>
+   <body>
+   <h1>Remote Scripting with an IFRAME</h1>
+ 
+   <iframe id="beforexhr"
+   name="beforexhr"
+   style="width:0px; height:0px; border: 0px"
+   src="blank.html"></iframe>
+ 
+   <a href="16-2.html" target="beforexhr">call the server</a>
+ 
+   </body>
+</html>
