@@ -1,0 +1,30 @@
+﻿<html>
+<!--名称：16-6.html-->
+<!--功能：加载 XML 文档 -->
+
+<body>
+<script type="text/javascript">
+//IE浏览器
+try 
+  {
+  xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+  }
+catch(e)
+  {
+ //其它浏览器，如Firefox, Mozilla, Opera, etc.
+  try
+    {
+    xmlDoc=document.implementation.createDocument("","",null);
+    }
+  catch(e) {alert(e.message)}
+  }
+try 
+  {
+  xmlDoc.async=false;
+  xmlDoc.load("16-7.xml");
+  document.write("xmlDoc is loaded, ready for use");
+  }
+catch(e) {alert(e.message)}
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<html>
+<head>
+<!--名称：16-10.html-->
+<!--功能：获取节点属性程序 -->
+
+</script>
+</head>
+<body>
+<script type="text/javascript">
+xmlDoc=loadXMLDoc("/example/xdom/books.xml");
+txt=xmlDoc.getElementsByTagName("title")[0].getAttribute("lang");
+document.write(txt);
+</script>
+</body>
+</html>

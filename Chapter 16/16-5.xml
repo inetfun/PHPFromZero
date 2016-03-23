@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--程序名称:18-5.xml-->
+ <!--程序功能:XML文档程序-->
+
+<series>
+<article>
+<url>http://builder.com.com/article.jhtml?id=u00220020327adm01.htm</url>
+<title>Remedial XML for programmers: Basic syntax</title>
+<summary>In this first installment in a three-part series, I'll introduce you to XML and its basic syntax.</summary></article>
+<article><url>http://builder.com.com/article.jhtml?id=u00220020401adm01.htm</url>
+<title>Remedial XML: Enforcing document formats with DTDs</title>
+<summary>To enforce structure requirements for an XML document, you have to turn to one of XML's attendant technologies, data type definition (DTD).</summary></article>
+<article>
+<url>http://builder.com.com/article.jhtml?id=u00320020418adm01.htm</url>
+ <title>Remedial XML: Using XML Schema</title>
+<summary>In this article, we'll briefly touch on the shortcomings of DTDs and discuss the basics of a newer, more powerful standard: XML Schemas.</summary> </article>
+<article><url>http://builder.com.com/article.jhtml?id=u00220020522adm01.htm</url>
+<title>Remedial XML: Say hello to DOM</title>
+<summary>Now it's time to put on your programmer's hat and get acquainted with Document Object Model (DOM), which provides easy access to XML documents via a tree-like set of objects.</summary></article>
+<article>
+<url>http://builder.com.com/article.jhtml?id=u00220020527adm01.htm</url>
+<title>Remedial XML: Learning to play SAX</title>
+<summary>In this fifth installment in our Remedial XML series, I'll introduce you to the SAX API and provide some links to SAX implementations in several languages.</summary>
+</article> 
+</series>
