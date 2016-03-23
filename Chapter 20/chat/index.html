@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Joy Chat</title>
+<link type="text/css" href="css/css.css" rel="stylesheet" />
+<script type="text/javascript" src="script/prototype.js"></script>
+<script type="text/javascript" src="script/ColorPicker.js"></script>
+<script type="text/javascript" src="script/Face.js"></script>
+<script type="text/javascript" src="script/Chat.js"></script>
+<script type="text/javascript">
+/*
+ * 创建Face对象,缓存表情图标
+ */
+parseInt(72).times(function(i){
+	new Face('e' + (i + 1),'emoticons/e' + (i + 1) + '.jpg',function(face){
+		$('txtMessage').value += '[' + face.name + ']';
+	});
+});
+/*
+ * 初始化应用程序
+ */
+function init()
+{
+	/*
+	 * 禁用#txtMessage和#btnSubmit
+	 */
+	$('txtMessage').disabled = true;
+	$('btnSubmit').disabled = true;
+	/*
+	 * 创建拾色器并显示到#colorBox中
+	 */
+	var colorPicker = new ColorPicker($('colorBox'),function(color){
+		$('color').setStyle({
+			'backgroundColor':color
+		});
+	});
+	/*
+	 * 注册#color的click事件句柄,选择颜色
+	 */
+	Event.observe($('color'),'click',function(){
+		$('txtMessage').setStyle({
+			'color':$('color').style.backgroundColor
+		});
+	});
+	/*
+	 * 初始化Chat对象的相关参数
+	 */
+	Chat.colorPicker = colorPicker;
+	Chat.messageBox = $('messageBox');
+	Chat.messageInput = $('txtMessage');
+	Chat.messageButton = $('btnSubmit');
+	/*
+	 * 初始化Face对象并显示表情图标到#emotBox中
+	 */
+	Face.dom = $('emotBox');
+	Face.pageSize = 16;
+	Face.show();
+	/*
+	 * 使用#btnPrevPage和#btnNextPage作为表情图标翻页的控制按钮
+	 */
+	$('btnPrevPage').onclick = Face.prevPage.bind(Face);
+	$('btnNextPage').onclick = Face.nextPage.bind(Face);
+	/*
+	 * 注册#btnSetName的click事件句柄，用于处理创建用户以及更改昵称
+	 */
+	$('btnSetName').onclick = function()
+	{
+		var name = $F('txtName');
+		Chat.setUser(name);
+	}
+	/*
+	 * 注册#btnSubmit的click事件句柄，用于发送消息
+	 */
+	$('btnSubmit').onclick = function()
+	{
+		if($F('txtMessage') == '')
+		{
+			alert('请输入消息内容');
+			return;
+		}
+		Chat.sendMessage($F('txtMessage'));
+	}
+}
+/*
+ * 在当前页面加载完成后初始化聊天室应用程序
+ */
+Event.observe(window,'load',init);
+</script>
+</head>
+
+<body>
+<h1>JoyChat Chatroom</h1>
+<div id="messageBox">
+</div>
+<div id="toolbar">
+	<label for="txtName">昵称</label><input type="text" id="txtName" name="txtName" size="10" maxlength="10" value="请先设定昵称" onfocus="this.select();" /><input type="button" id="btnSetName" name="btnSetName" value="设定昵称" />
+	<div class="clear"></div>
+	<textarea id="txtMessage" name="txtMessage"></textarea><input type="button" id="btnSubmit" name="btnSubmit" value="发言" />
+	<div class="clear"></div>
+	<div id="colorBox"></div><div id="color"></div>
+	<input type="button" id="btnPrevPage" name="btnPrevPage" value="<<" />
+	<div id="emotBox"></div>
+	<input type="button" id="btnNextPage" name="btnNextPage" value=">>" />
+</div>
+</body>
+</html>
